@@ -7,7 +7,8 @@ pipeline {
         sh '''
           git --version
           npm install
-          npm start
+          npm start 
+          tar czf nodejs-$BUILD_NUMBER.tar.gz .
         '''
       }
     }
