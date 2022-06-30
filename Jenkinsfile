@@ -6,8 +6,7 @@ pipeline {
       steps {
         sh '''
           git --version
-          ansible-playbook --version
-          ansible-galaxy --version
+          npm install
         '''
       }
     }
