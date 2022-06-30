@@ -7,6 +7,7 @@ pipeline {
         sh '''
           git --version
           npm install
+          npm start
         '''
       }
     }
