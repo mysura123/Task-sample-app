@@ -32,6 +32,17 @@ pipeline {
         }
       }
 
-       
+       stage('K8S Deploy') {
+        steps{   
+            script {
+                withKubeConfig([credentialsId: 'K8S', serverUrl: '']) {
+                sh ('kubectl apply -f mongo-secret.yaml
+                     kubectl apply -f mongo.yaml
+                     kubectl apply -f mongo-configmap.yaml 
+                     kubectl apply -f mongo-express.yaml')
+                }
+            }
+        }
+       }
     }
 }
