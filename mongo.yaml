@@ -1,19 +1,9 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mongodb
-spec:
-  selector:
-    matchLabels:
-      role: mongodb
-      environment: dev
-  serviceName: "mongo"
-  replicas: 3
-  template:
-    metadata:
-      labels:
-        role: mongodb
-        environment: dev	
+  name: mongodb-deployment
+  labels:
+    app: mongodb
 spec:
   replicas: 1
   selector:
@@ -53,5 +43,3 @@ spec:
       port: 27017
       targetPort: 27017
 
-
-		
