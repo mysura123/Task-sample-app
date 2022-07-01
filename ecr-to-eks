@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+      - name: latest
+        image: 938869457425.dkr.ecr.us-east-1.amazonaws.com/nodeapp:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+# service type loadbalancer       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nodejs
+    k8s-app: nodejs
+  name: nodejs
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  type: LoadBalancer
+  selector:
+    app: nodejs
