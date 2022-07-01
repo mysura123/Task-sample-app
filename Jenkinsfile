@@ -41,7 +41,7 @@ pipeline {
                 sh 'kubectl apply -f mongo.yaml'
                 sh 'kubectl apply -f mongo-configmap.yaml'
                 sh 'kubectl apply -f mongo-express.yaml'
-                sh 'ecr-to-eks.yaml'
+                sh 'kubectl apply -f ecr-to-eks.yaml'
                 }
             }
         }
