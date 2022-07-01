@@ -5,7 +5,7 @@ ENV MONGO_DB_USERNAME=username \
 
 RUN mkdir -p /home/app
 
-COPY ./ /home/app
+
 
 COPY package*.json ./ /home/app
 
