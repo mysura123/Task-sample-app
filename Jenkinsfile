@@ -35,7 +35,8 @@ pipeline {
        stage('K8S Deploy') {
         steps{   
             script {
-                withKubeConfig([credentialsId: 'K8S', serverUrl: '']) {
+                withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'K8SS', namespace: '', serverUrl: '') {
+    // some block
                 sh 'kubectl apply -f mongo-secret.yaml'
                 sh 'kubectl apply -f mongo.yaml'
                 sh 'kubectl apply -f mongo-configmap.yaml'
