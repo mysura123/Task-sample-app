@@ -18,3 +18,11 @@ To run this project, you will need to add the following environment variables to
 
 `DB_URL="mongodb://localhost:27017/crud"`
 `NODE_ENV="DEV"`
+
+
+############################################################
+All CI CD Configurations are in Jenkinsfile
+Kubernetes Files are 
+mongoheadless.yml
+mongostateful.yml
+ecr-to-eks.yaml
