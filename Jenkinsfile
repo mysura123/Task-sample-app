@@ -38,7 +38,7 @@ pipeline {
             script {
                 withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'K8SS', namespace: '', serverUrl: '') {
     // some block
-                sh 'kubectl apply -f mongoheadless.yml 
+                sh 'kubectl apply -f mongoheadless.yml'
                 sh 'kubectl apply -f mongostateful.yml'
                 sh 'kubectl apply -f ecr-to-eks.yaml'
                 }
