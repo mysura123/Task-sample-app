@@ -27,7 +27,7 @@ pipeline {
      steps{  
          script {
                 sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 938869457425.dkr.ecr.us-east-1.amazonaws.com'
-                sh 'docker push 938869457425.dkr.ecr.us-east-1.amazonaws.com/nodeapp:latest'
+                sh 'docker push 938869457425.dkr.ecr.us-east-1.amazonaws.com/myapp:latest'
          }
         }
       }
@@ -37,10 +37,8 @@ pipeline {
             script {
                 withKubeConfig(caCertificate: '', clusterName: '', contextName: '', credentialsId: 'K8SS', namespace: '', serverUrl: '') {
     // some block
-                sh 'kubectl apply -f mongo-secret.yaml'
-                sh 'kubectl apply -f mongo.yaml'
-                sh 'kubectl apply -f mongo-configmap.yaml'
-                sh 'kubectl apply -f mongo-express.yaml'
+                sh 'kubectl apply -f mongoheadless.yml 
+                sh 'kubectl apply -f mongostateful.yml'
                 sh 'kubectl apply -f ecr-to-eks.yaml'
                 }
             }
