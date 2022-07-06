@@ -1,17 +1,19 @@
-FROM node:latest
+FROM node
 
-ENV MONGO_DB_USERNAME=username \
-    MONGO_DB_PWD=password
+#ENV NODE_ENV=DEV
+#ENV DB_URL=mongodb://admin:password@localhost:27017
 
-RUN mkdir -p /home/app
+WORKDIR /app
 
-COPY ./ /home/app
+COPY ["package.json", "package-lock.json*", "./"]
 
-# set default dir so that next commands executes in /home/app dir
-WORKDIR /home/app
-
-# will execute npm install in /home/app because of WORKDIR
 RUN npm install
 
-# no need for /home/app/server.js because of WORKDIR
-CMD ["node", "/home/app/server.js"]
+COPY . .
+
+EXPOSE 3000
+
+CMD [ "node", "server.js" ]
+
+
+
