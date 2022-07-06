@@ -14,12 +14,10 @@ spec:
     spec:
       containers:
       - name: latest
-        image: 938869457425.dkr.ecr.us-east-1.amazonaws.com/nodeapp:latest
+        image: 938869457425.dkr.ecr.us-east-1.amazonaws.com/myapp:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
-          name: http
-          protocol: TCP
 # service type loadbalancer       
 ---
 apiVersion: v1
